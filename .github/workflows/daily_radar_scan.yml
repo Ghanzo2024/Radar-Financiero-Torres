@@ -1,0 +1,42 @@
+name: Radar Financiero — Escaneo Diario Automático
+
+on:
+  schedule:
+    # Lunes a Viernes a las 21:30 UTC (~17:30 hora de Chile, tras el cierre de Wall Street)
+    - cron: '30 21 * * 1-5'
+  workflow_dispatch: # Permite probarlo manualmente cuando quieras
+
+jobs:
+  run-radar-scanner:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar Repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar Dependencias
+        run: |
+          pip install --upgrade pip
+          pip install yfinance pandas numpy pyarrow lxml html5lib beautifulsoup4
+
+      - name: Ejecutar Motor 1 (Scanner)
+        run: |
+          python "01 - MOTOR 1 - SCANNER/00 - CODIGO/radar_motor1_core_v1_0.py"
+
+      - name: Ejecutar Motor 2 (Estrategias)
+        run: |
+          python "05 - MOTOR 2 - ESTRATEGIAS/00 - CODE/radar_motor2_strategies.py"
+
+      - name: Guardar y Sincronizar Resultados Diarios
+        run: |
+          git config --global user.name "Radar Bot"
+          git config --global user.email "bot@radarfinanciero.com"
+          git add -A
+          git diff-index --quiet HEAD || git commit -m "chore(radar): escaneo diario automático [$(date +'%Y-%m-%d')]"
+          git push
