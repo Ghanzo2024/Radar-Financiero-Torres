@@ -2,9 +2,9 @@ name: Radar Financiero — Escaneo Diario Automático
 
 on:
   schedule:
-    # Lunes a Viernes a las 21:30 UTC (~17:30 hora de Chile, tras el cierre de Wall Street)
+    # Lunes a Viernes a las 21:30 UTC (~17:30 hora de Chile, tras cierre de Wall Street)
     - cron: '30 21 * * 1-5'
-  workflow_dispatch: # Permite probarlo manualmente cuando quieras
+  workflow_dispatch: # Botón manual
 
 jobs:
   run-radar-scanner:
@@ -27,11 +27,11 @@ jobs:
 
       - name: Ejecutar Motor 1 (Scanner)
         run: |
-          python "01 - MOTOR 1 - SCANNER/00 - CODIGO/radar_motor1_core_v1_0.py"
+          python -c "from pathlib import Path; import radar_motor1_core_v1_0 as r; cfg = r.ScannerConfig(max_tickers=250, batch_size=50); r.run_scanner_pipeline(cfg, Path('.'))"
 
       - name: Ejecutar Motor 2 (Estrategias)
         run: |
-          python "05 - MOTOR 2 - ESTRATEGIAS/00 - CODE/radar_motor2_strategies.py"
+          python -c "from pathlib import Path; import pandas as pd, radar_motor2_strategies as r; df = pd.read_csv('01 - MOTOR 1 - SCANNER/01 - OUTPUTS/scanner_latest.csv'); cands, s = r.run_motor2_strategies(df); out = Path('05 - MOTOR 2 - ESTRATEGIAS/02 - OUTPUTS'); out.mkdir(parents=True, exist_ok=True); cands.to_csv(out / 'candidates_today.csv', index=False); print('Motor 2 terminado:', s)"
 
       - name: Guardar y Sincronizar Resultados Diarios
         run: |
