@@ -1,1 +1,2 @@
-
+ticker,strategy,horizon,close,stage,score,entry_trigger,stop_price,risk_pct,confluence,reason,risk_per_share,suggested_shares,position_value
+SHEL,BREAKOUT SWING,Swing (3–15 días),100.18000030517578,STAGE 2 ALCISTA,,Ruptura sobre $100.20,94.98,5.19,4,Consolidación ajustada a -0.0% del pivote con volumen relativo 1.28x.,5.200000305175777,38,3806.84
