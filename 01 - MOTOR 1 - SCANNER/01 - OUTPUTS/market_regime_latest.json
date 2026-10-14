@@ -1,36 +1,36 @@
 {
-  "regime": "FAVORABLE",
-  "market_regime_score": 84.25,
-  "index_score": 90.0,
-  "vix": 15.210000038146973,
+  "regime": "ADVERSO",
+  "market_regime_score": 34.75,
+  "index_score": 0.0,
+  "vix": 15.270000457763672,
   "details": {
     "SPY": {
-      "close": 778.0999755859375,
-      "above_sma50": true,
-      "above_sma200": true
+      "close": NaN,
+      "above_sma50": false,
+      "above_sma200": false
     },
     "QQQ": {
-      "close": 746.0399780273438,
-      "above_sma50": true,
-      "above_sma200": true
+      "close": NaN,
+      "above_sma50": false,
+      "above_sma200": false
     },
     "IWM": {
-      "close": 277.8999938964844,
+      "close": NaN,
       "above_sma50": false,
-      "above_sma200": true
+      "above_sma200": false
     },
     "^VIX": {
-      "close": 15.210000038146973,
+      "close": 15.270000457763672,
       "quality": "OK"
     },
     "^TNX": {
-      "close": 5.240000247955322,
+      "close": 5.2170000076293945,
       "quality": "OK"
     },
     "DX-Y.NYB": {
-      "close": 102.40499877929688,
+      "close": 102.16200256347656,
       "quality": "OK"
     }
   },
-  "retrieved_at_utc": "2026-10-13T02:40:11.933247+00:00"
+  "retrieved_at_utc": "2026-10-14T00:28:41.004730+00:00"
 }
