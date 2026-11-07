@@ -2,7 +2,7 @@
   "regime": "ADVERSO",
   "market_regime_score": 25.75,
   "index_score": 0.0,
-  "vix": 28.18000030517578,
+  "vix": 25.639999389648438,
   "details": {
     "SPY": {
       "close": NaN,
@@ -20,17 +20,17 @@
       "above_sma200": false
     },
     "^VIX": {
-      "close": 28.18000030517578,
+      "close": 25.639999389648438,
       "quality": "OK"
     },
     "^TNX": {
-      "close": 4.836999893188477,
+      "close": 4.859000205993652,
       "quality": "OK"
     },
     "DX-Y.NYB": {
-      "close": 101.61100006103516,
+      "close": 102.27899932861328,
       "quality": "OK"
     }
   },
-  "retrieved_at_utc": "2026-11-06T01:43:00.063568+00:00"
+  "retrieved_at_utc": "2026-11-07T01:02:24.362711+00:00"
 }
